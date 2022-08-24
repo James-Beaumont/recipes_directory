@@ -18,11 +18,11 @@ RSpec.describe RecipeRepository do
 
             recipe = repo.all
 
-            expect(recipes.length).to eq 3
-            expect(recipes[0].id).to eq '1'
-            expect(recipes[0].name).to eq 'Pizza'
-            expect(recipes[0].cooking_time).to eq '30'
-            expect(recipes[0].rating).to eq 5
+            expect(recipe.length).to eq 3
+            expect(recipe[0].id).to eq '1'
+            expect(recipe[0].name).to eq 'Pizza'
+            expect(recipe[0].cooking_time).to eq '30'
+            expect(recipe[0].rating).to eq '5'
         end
             
         it 'returns recipe based on id' do
@@ -30,10 +30,10 @@ RSpec.describe RecipeRepository do
 
             recipe = repo.find(1)
 
-            expect(recipe.id).to eq 1
-            expect(recipe.name).to eq 'Pizza'
-            expect(recipe.cooking_time).to eq '30'
-            expect(recipe.rating).to eq 5
+            # expect(recipe.id).to eq 1
+            expect(recipe.first.name).to eq 'Pizza'
+            expect(recipe.first.cooking_time).to eq '30'
+            expect(recipe.first.rating).to eq '5'
         end
     end
 end

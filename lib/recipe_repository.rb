@@ -1,18 +1,52 @@
-
+require_relative "./recipe.rb"
 class RecipeRepository
     
     
     def all
-        # Executes the SQL query:
-        #SELECT id, name, cooking_time, rating FROM recipes;
+        sql = 'SELECT id, name, cooking_time, rating FROM recipes;'
+        recipe_set = DatabaseConnection.exec_params(sql, [])
+
+        recipes = []
+
+        recipe_set.each do |item|
+            new_recipe = Recipe.new 
+            
+            new_recipe.id = item['id']
+            new_recipe.name = item['name']
+            new_recipe.cooking_time = item['cooking_time']
+            new_recipe.rating = item['rating']
+
+            recipes << new_recipe
+        end
+
+        return recipes
 
         # Returns an array of Student objects.
     end
 
     def find(id)
         # Executes the SQL query:
-        #SELECT * FROM students WHERE id = $1;
+        sql = 'SELECT * FROM recipes WHERE id = $1'
+        param = [id]
     
-        # Returns a single Student object.
-      end
+        recipe_set = DatabaseConnection.exec_params(sql, param)
+
+        recipes = []
+
+        recipe_set.each do |item|
+            new_recipe = Recipe.new 
+            
+            # new_recipe.id = item['id']
+            new_recipe.name = item['name']
+            new_recipe.cooking_time = item['cooking_time']
+            new_recipe.rating = item['rating']
+
+            recipes << new_recipe
+        end
+
+        return recipes
+
+        # Returns an array of Student objects.
+    end
+      
 end

@@ -1,3 +1,8 @@
+-- CREATE TABLE recipes (
+--     id PRIMARY SERIAL KEY,
+--     name text,
+--     cooking_time text,
+--     rating int);
 
 TRUNCATE TABLE recipes RESTART IDENTITY; -- replace with your own table name.
 

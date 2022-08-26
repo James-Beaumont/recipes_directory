@@ -36,7 +36,7 @@ class RecipeRepository
         recipe_set.each do |item|
             new_recipe = Recipe.new 
             
-            # new_recipe.id = item['id']
+            new_recipe.id = item['id']
             new_recipe.name = item['name']
             new_recipe.cooking_time = item['cooking_time']
             new_recipe.rating = item['rating']
